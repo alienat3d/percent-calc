@@ -32,6 +32,9 @@ label:has(input#checkbox) {
   display: flex;
   align-items: center;
 }
+label:has(input#number) {
+  margin-left: 35px;
+}
 
 input#checkbox {
   cursor: pointer;
