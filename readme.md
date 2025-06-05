@@ -3,8 +3,8 @@
 
 ---
 
-## Also implemented:
+# Also implemented:
 
-> function automatically increases the width of the number input;
-> check and restrict on entering 0 at the beginning of the value of number input;
-> check and restrict on entering a number outside the range from 1 to 99 in the percentage input.
+- function automatically increases the width of the number input;
+- check and restrict on entering 0 at the beginning of the value of number input;
+- check and restrict on entering a number outside the range from 1 to 99 in the percentage input.
