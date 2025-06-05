@@ -2,7 +2,8 @@ const title = document.querySelector('h1');
 const checkbox = document.querySelector('#checkbox');
 const numberInput = document.querySelector('#number');
 const percentInput = document.querySelector('#percent');
-const output = document.querySelector('.output-box');
+const output = document.querySelector('.output');
+const outputBox = output.querySelector('.output-box');
 const inputs = [numberInput, percentInput];
 
 const calcPercent = function () {
@@ -15,15 +16,25 @@ const roundToTwoAfterPoint = function (number) {
   return Math.round(number * 100) / 100;
 };
 const outputPercent = function () {
-  if (numberInput === '' || numberInput === 0) return;
-  output.textContent = roundToTwoAfterPoint(calcPercent());
+  if (numberInput.value === '' || percentInput.value === '') {
+    outputBox.textContent = '';
+    output.classList.remove('active');
+  } else {
+    outputBox.textContent = roundToTwoAfterPoint(calcPercent());
+    output.classList.add('active');
+  }
 };
 const outputSubtraction = function () {
-  if (numberInput === '' || numberInput === 0) return;
-  output.textContent = roundToTwoAfterPoint(calcNumSubtractPercent());
+  if (numberInput.value === '' || percentInput.value === '') {
+    outputBox.textContent = '';
+    output.classList.remove('active');
+  } else {
+    outputBox.textContent = roundToTwoAfterPoint(calcNumSubtractPercent());
+    output.classList.add('active');
+  }
 };
 
-function smoothAutoResize(input) {
+const smoothAutoResize = function (input) {
   const hiddenDiv = document.createElement('div');
   hiddenDiv.classList.add('hidden-div');
   document.body.appendChild(hiddenDiv);
@@ -39,7 +50,7 @@ function smoothAutoResize(input) {
     hiddenDiv.textContent = input.value || input.placeholder || '';
 
     const width = hiddenDiv.offsetWidth;
-    input.style.width = Math.max(100, Math.min(500, width + 17)) + 'px';
+    input.style.width = Math.max(100, Math.min(500, width + 19)) + 'px';
   }
 
   input.addEventListener('input', resize);
@@ -50,7 +61,7 @@ function smoothAutoResize(input) {
   return function cleanup() {
     document.body.removeChild(hiddenDiv);
   };
-}
+};
 
 inputs.forEach((input) => {
   checkbox.checked
@@ -87,11 +98,7 @@ numberInput.addEventListener('input', (evt) => {
 percentInput.addEventListener('input', (evt) => {
   let value = evt.target.value;
 
-  if (value < 1) {
-    value = 1;
-  } else if (value > 99) {
-    value = 99;
-  }
+  if (value > 99) value = 99;
 
   evt.target.value = value;
 });

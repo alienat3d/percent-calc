@@ -31,36 +31,58 @@ label:has(input#checkbox) {
   cursor: pointer;
   display: flex;
   align-items: center;
+  min-height: 30px;
 }
 label:has(input#number) {
   margin-left: 35px;
+}
+
+input {
+  outline-offset: 1px;
+  outline: 2px dotted transparent;
+  padding: 5px 5px 3px;
+  transition: outline-color 0.25s ease;
+  margin-left: 5px;
+  border: 0;
+  border-radius: 5px;
+  min-height: 30px;
+  background-color: #bcbcbc;
+  font-size: 22px;
+}
+input:focus {
+  outline-color: aquamarine;
 }
 
 input#checkbox {
   cursor: pointer;
   margin-left: 10px;
   width: 20px;
+  min-height: 21px;
 }
-input {
-  margin-left: 5px;
-  border: 0;
-  min-height: 30px;
-  background-color: #bcbcbc;
-  font-size: 22px;
-}
+
 input#percent {
   width: 45px;
 }
 
-h2 {
+.output {
   margin-top: 50px;
+  opacity: 0.25;
+  transition: opacity 0.25s ease;
+}
+.output.active {
+  opacity: 1;
+}
+
+h2 {
+  text-align: center;
 }
 
 .output-box {
   border: 2px dotted aquamarine;
   border-radius: 20px;
-  padding: 10px;
+  padding: 10px 15px 9px;
   min-width: 150px;
+  min-height: 28px;
   text-align: center;
   font-size: 25px;
 }
